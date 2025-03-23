@@ -53,6 +53,18 @@ nav.navbar {
   margin-bottom: 2rem;
 }
 
+#viewer-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+#modelViewer {
+  border: 1px solid #ccc;
+  width: 80%;
+  height: 400px;
+}
+
 h1, h2 {
   margin-bottom: 1rem;
 }

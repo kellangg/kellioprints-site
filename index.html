@@ -12,7 +12,7 @@
     <div class="nav-links">
       <label class="upload-btn">
         Upload File
-        <input type="file" accept=".stl,.obj" hidden />
+        <input type="file" id="fileInput" accept=".stl,.obj" hidden />
       </label>
       <a href="#" class="nav-link">Blog</a>
       <a href="#" class="nav-link">About Us</a>
@@ -23,8 +23,12 @@
   <main>
     <section class="upload-section">
       <h2>Upload Your 3D Model</h2>
-      <input type="file" id="fileInput" accept=".stl,.obj"/>
+      <input type="file" id="fileInput2" accept=".stl,.obj"/>
       <p id="uploadStatus"></p>
+    </section>
+
+    <section id="viewer-container">
+      <canvas id="modelViewer"></canvas>
     </section>
 
     <section>
@@ -46,16 +50,10 @@
     <p id="footerText"></p>
   </footer>
 
-  <script>
-    document.getElementById("fileInput").addEventListener("change", function() {
-      const file = this.files[0];
-      if (file) {
-        document.getElementById("uploadStatus").textContent = "Uploaded: " + file.name;
-      }
-    });
-
-    document.getElementById("footerText").innerHTML =
-      "&copy; " + new Date().getFullYear() + " Kellio Prints. All rights reserved.";
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/loaders/STLLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/loaders/OBJLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
+  <script src="viewer.js"></script>
 </body>
 </html>
