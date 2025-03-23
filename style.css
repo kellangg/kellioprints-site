@@ -7,10 +7,9 @@ html, body {
   display: flex;
   flex-direction: column;
 }
-body > main {
+body > .main-wrapper {
+  display: flex;
   flex: 1;
-  padding: 2rem;
-  text-align: center;
 }
 nav.navbar {
   display: flex;
@@ -28,13 +27,32 @@ nav.navbar {
   display: flex;
   gap: 1rem;
 }
-.nav-link, .upload-btn {
+.nav-link {
   color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
   background-color: #222;
   border-radius: 5px;
-  cursor: pointer;
+}
+.sidebar {
+  width: 300px;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-right: 1px solid #ddd;
+}
+.sidebar label {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.sidebar input, .sidebar select {
+  width: 100%;
+  padding: 0.3rem;
+  margin-top: 0.25rem;
+}
+.main-panel {
+  flex: 1;
+  padding: 2rem;
+  text-align: center;
 }
 footer {
   background: #111;

@@ -10,21 +10,36 @@
   <nav class="navbar">
     <div class="nav-logo">Kellio Prints</div>
     <div class="nav-links">
-      <label class="upload-btn">
-        Upload File
-        <input type="file" id="fileInput" accept=".stl" hidden />
-      </label>
       <a href="#" class="nav-link">Blog</a>
       <a href="#" class="nav-link">About Us</a>
       <a href="#" class="nav-link">Customer Support</a>
     </div>
   </nav>
 
-  <main>
-    <h2>Slice Your 3D Model</h2>
-    <input type="file" id="modelUpload" accept=".stl"/>
-    <button id="sliceBtn">Slice and Download G-code</button>
-    <p id="status"></p>
+  <main class="main-wrapper">
+    <aside class="sidebar">
+      <h3>Print Settings</h3>
+      <label>Scale (%) <input type="number" id="scale" value="100" /></label>
+      <label>Rotate X° <input type="range" id="rotateX" min="0" max="360" value="0" /></label>
+      <label>Rotate Y° <input type="range" id="rotateY" min="0" max="360" value="0" /></label>
+      <label>Rotate Z° <input type="range" id="rotateZ" min="0" max="360" value="0" /></label>
+      <label>Infill %
+        <select id="infill">
+          <option>10</option>
+          <option>20</option>
+          <option>50</option>
+          <option>100</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="supports" /> Enable Supports</label>
+    </aside>
+
+    <section class="main-panel">
+      <h2>Slice Your 3D Model</h2>
+      <input type="file" id="modelUpload" accept=".stl"/>
+      <button id="sliceBtn">Slice and Download G-code</button>
+      <p id="status"></p>
+    </section>
   </main>
 
   <footer>
