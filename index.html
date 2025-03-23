@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kellio Prints - Preset Slicer</title>
+  <title>Kellio Prints - STL Adjuster</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -18,39 +18,18 @@
 
   <main class="main-wrapper">
     <aside class="sidebar">
-      <h3>Printer Presets</h3>
-      <label>Select Printer
-        <select id="printerSelect">
-          <option value="p1s">Bambu Lab P1S</option>
-          <option value="k1c">Creality K1C</option>
-          <option value="ender3">Ender 3 V2 Neo</option>
-          <option value="lk5">Longer LK5 Pro</option>
-          <option value="creatorpro">Flashforge Creator Pro</option>
-        </select>
-      </label>
-      <h3>Print Settings</h3>
+      <h3>Adjust Your Model</h3>
       <label>Scale (%) <input type="number" id="scale" value="100" /></label>
       <label>Rotate X° <input type="range" id="rotateX" min="0" max="360" value="0" /></label>
       <label>Rotate Y° <input type="range" id="rotateY" min="0" max="360" value="0" /></label>
       <label>Rotate Z° <input type="range" id="rotateZ" min="0" max="360" value="0" /></label>
-      <label>Infill %
-        <select id="infill">
-          <option>10</option>
-          <option>20</option>
-          <option>50</option>
-          <option>100</option>
-        </select>
-      </label>
-      <label><input type="checkbox" id="supports" /> Enable Supports</label>
+      <button id="exportBtn">Download Adjusted STL</button>
     </aside>
 
     <section class="main-panel">
-      <h2>Upload and Preview</h2>
+      <h2>Upload Your 3D Model</h2>
       <input type="file" id="modelUpload" accept=".stl"/>
-      <div id="bedOverlay">
-        <canvas id="modelViewer"></canvas>
-      </div>
-      <button id="sliceBtn">Slice and Download G-code</button>
+      <canvas id="modelViewer"></canvas>
       <p id="status"></p>
     </section>
   </main>
@@ -64,7 +43,8 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/loaders/STLLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/exporters/STLExporter.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
-  <script src="slicer.js"></script>
+  <script src="preslicer.js"></script>
 </body>
 </html>
