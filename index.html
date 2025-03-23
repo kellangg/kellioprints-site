@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kellio Prints - Web Slicer</title>
+  <title>Kellio Prints - Web Slicer + Preview</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -35,8 +35,9 @@
     </aside>
 
     <section class="main-panel">
-      <h2>Slice Your 3D Model</h2>
+      <h2>Upload and Preview</h2>
       <input type="file" id="modelUpload" accept=".stl"/>
+      <canvas id="modelViewer"></canvas>
       <button id="sliceBtn">Slice and Download G-code</button>
       <p id="status"></p>
     </section>
@@ -49,6 +50,9 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/loaders/STLLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
   <script src="slicer.js"></script>
 </body>
 </html>

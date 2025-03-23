@@ -31,3 +31,46 @@ document.getElementById("sliceBtn").addEventListener("click", () => {
   link.click();
   status.textContent = "G-code generated successfully!";
 });
+
+const canvas = document.getElementById("modelViewer");
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+renderer.setSize(canvas.clientWidth, 400);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+camera.position.set(0, 0, 100);
+controls.update();
+
+const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+scene.add(light);
+
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+function clearScene() {
+  while (scene.children.length > 0) {
+    scene.remove(scene.children[0]);
+  }
+  scene.add(light);
+}
+
+document.getElementById("modelUpload").addEventListener("change", function(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  clearScene();
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const contents = e.target.result;
+    const loader = new THREE.STLLoader();
+    const geometry = loader.parse(contents);
+    const material = new THREE.MeshNormalMaterial();
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+  };
+  reader.readAsArrayBuffer(file);
+});
