@@ -93,3 +93,35 @@ document.getElementById("sliceBtn").addEventListener("click", () => {
   link.click();
   status.textContent = "G-code generated successfully!";
 });
+
+// Fix STL centering and scaling
+function centerAndScaleMesh(mesh, targetSize = 100) {
+  const box = new THREE.Box3().setFromObject(mesh);
+  const size = new THREE.Vector3();
+  box.getSize(size);
+  const scale = targetSize / Math.max(size.x, size.y, size.z);
+  mesh.scale.set(scale, scale, scale);
+
+  box.setFromObject(mesh);
+  const center = new THREE.Vector3();
+  box.getCenter(center);
+  mesh.position.sub(center); // Center it
+}
+
+document.getElementById("modelUpload").addEventListener("change", function(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  clearScene();
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const contents = e.target.result;
+    const loader = new THREE.STLLoader();
+    const geometry = loader.parse(contents);
+    const material = new THREE.MeshNormalMaterial();
+    const mesh = new THREE.Mesh(geometry, material);
+    centerAndScaleMesh(mesh);
+    scene.add(mesh);
+  };
+  reader.readAsArrayBuffer(file);
+});
