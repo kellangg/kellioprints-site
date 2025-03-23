@@ -1,9 +1,16 @@
-body {
-  font-family: Arial, sans-serif;
+html, body {
+  height: 100%;
   margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif;
   background: #ffffff;
   color: #111;
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1;
+  padding: 2rem;
 }
 
 nav.navbar {
@@ -41,10 +48,6 @@ nav.navbar {
   background-color: #444;
 }
 
-main {
-  padding: 2rem;
-}
-
 .upload-section {
   text-align: center;
   margin-bottom: 2rem;
@@ -71,7 +74,4 @@ footer {
   color: white;
   text-align: center;
   padding: 1rem;
-  position: sticky;
-  bottom: 0;
-  width: 100%;
 }
