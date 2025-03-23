@@ -67,3 +67,14 @@ canvas#modelViewer {
   border: 1px solid #ccc;
   margin-top: 1rem;
 }
+
+#bedOverlay {
+  position: relative;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  margin-top: 1rem;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

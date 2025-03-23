@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kellio Prints - Web Slicer + Preview</title>
+  <title>Kellio Prints - Preset Slicer</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -18,6 +18,16 @@
 
   <main class="main-wrapper">
     <aside class="sidebar">
+      <h3>Printer Presets</h3>
+      <label>Select Printer
+        <select id="printerSelect">
+          <option value="p1s">Bambu Lab P1S</option>
+          <option value="k1c">Creality K1C</option>
+          <option value="ender3">Ender 3 V2 Neo</option>
+          <option value="lk5">Longer LK5 Pro</option>
+          <option value="creatorpro">Flashforge Creator Pro</option>
+        </select>
+      </label>
       <h3>Print Settings</h3>
       <label>Scale (%) <input type="number" id="scale" value="100" /></label>
       <label>Rotate X° <input type="range" id="rotateX" min="0" max="360" value="0" /></label>
@@ -37,7 +47,9 @@
     <section class="main-panel">
       <h2>Upload and Preview</h2>
       <input type="file" id="modelUpload" accept=".stl"/>
-      <canvas id="modelViewer"></canvas>
+      <div id="bedOverlay">
+        <canvas id="modelViewer"></canvas>
+      </div>
       <button id="sliceBtn">Slice and Download G-code</button>
       <p id="status"></p>
     </section>
