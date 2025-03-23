@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kellio Prints</title>
+  <title>Kellio Prints - Web Slicer</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -12,7 +12,7 @@
     <div class="nav-links">
       <label class="upload-btn">
         Upload File
-        <input type="file" id="fileInput" accept=".stl,.obj" hidden />
+        <input type="file" id="fileInput" accept=".stl" hidden />
       </label>
       <a href="#" class="nav-link">Blog</a>
       <a href="#" class="nav-link">About Us</a>
@@ -21,39 +21,19 @@
   </nav>
 
   <main>
-    <section class="upload-section">
-      <h2>Upload Your 3D Model</h2>
-      <input type="file" id="fileInput2" accept=".stl,.obj"/>
-      <p id="uploadStatus"></p>
-    </section>
-
-    <section id="viewer-container">
-      <canvas id="modelViewer"></canvas>
-    </section>
-
-    <section>
-      <h2>What We Offer</h2>
-      <ul>
-        <li>⚡ Fast Turnaround</li>
-        <li>💰 Affordable Pricing</li>
-        <li>📦 Professional Quality Prints</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:kellioprints@gmail.com">kellioprints@gmail.com</a></p>
-    </section>
+    <h2>Slice Your 3D Model</h2>
+    <input type="file" id="modelUpload" accept=".stl"/>
+    <button id="sliceBtn">Slice and Download G-code</button>
+    <p id="status"></p>
   </main>
 
   <footer>
-    <p id="footerText"></p>
+    <p>&copy; <span id="year"></span> Kellio Prints. All rights reserved.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/loaders/STLLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/loaders/OBJLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
-  <script src="viewer.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="slicer.js"></script>
 </body>
 </html>
